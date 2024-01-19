@@ -147,3 +147,21 @@ metrics_df <- data.frame(Precision = precision, Recall = recall, F1_Score = f1_s
 print("Precision, Recall ve F1-score:")
 print(metrics_df)
 ```
+
+# Q7 : Sonuç değerlendirme, tavsiyeler
+
+Veri Seti Boyutu: Veri setinin boyutu genişletilebilir. Daha fazla örnek veri eklenmesi, modelin genelleme yeteneğini artırabilir ve daha çeşitli senaryolara adapte olmasına yardımcı olabilir.
+
+Özellik Seçimi: Modelde kullanılan özelliklerin (Protocol, Packet vb.) seçimi üzerinde daha fazla analiz yapılabilir. Belki de farklı özellik kombinasyonları veya yeni özellikler eklemek modelin performansını artırabilir.
+
+Model Ayarları: Random Forest modelinin hiperparametreleri (örneğin, ntree) belirli bir veri seti için optimal olabilir, ancak farklı ayarlarla denemeler yapmak, modelin daha iyi performans göstermesine olanak tanır.
+
+Değerlendirme Metrikleri: Modelin başarı ölçütleri olarak kullanılan Precision, Recall ve F1-score metriklerinin yanı sıra, başka metrikler de incelenebilir. ROC eğrisi veya AUC değerleri gibi metrikler modelin performansını daha kapsamlı bir şekilde değerlendirebilir.
+
+Eksik Veri ve Temizlik: Veri setinde eksik veya hatalı değerler varsa, bu durumları ele almak ve temizlik yapmak modelin güvenilirliğini artırabilir.
+
+Farklı Modellerin Karşılaştırılması: Random Forest dışında başka sınıflandırma modelleri de denenebilir. Bu, en iyi modelin seçilmesine yardımcı olabilir.
+
+Eğitim ve Test Verileri Dengeleme: Eğitim ve test veri setleri arasındaki sınıf dengesizliği göz önüne alınmalıdır. Sınıflar arasındaki dengesizlik, modelin bazı sınıfları daha iyi tahmin etmesine neden olabilir.
+
+Bu değerlendirme ve tavsiyeler, modelin daha güçlü ve genelleme yapabilen bir yapıya sahip olmasına yardımcı olabilir.
