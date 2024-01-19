@@ -60,3 +60,37 @@ sapply(myDF, class)
 # Her sütundaki eksik değer sayıları
 colSums(is.na(myDF))
 ```
+
+# Q4 : Veri seti ön işlemesi
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+install.packages("VIM")
+library(VIM)
+# Eksik değerleri görselleştirme
+aggr_plot <- aggr(myDF, col=c('navajowhite1', 'navajowhite3'), numbers=TRUE, sortVars=TRUE, labels=names(myDF), cex.axis=.7, gap=3, ylab=c("Histogram of missing data","Pattern"))
+
+# Veri Dağılımını Görselleştirme:
+# Histogram örneği (sadece numeric sütunlar için)
+str(myDF)
+
+# Hangi sütunların sayısal olduğunu kontrol et
+numeric_columns <- sapply(myDF, is.numeric)
+numeric_columns_names <- names(numeric_columns[numeric_columns])
+print(numeric_columns_names)
+
+# Histogram örneği (sadece numeric sütunlar için)
+hist(myDF$`Source Port`, main = "Source Port Distribution", xlab = "Values", col = "lightblue")
+hist(myDF$`Destination Port`, main = "Destination Port Distribution", xlab = "Values", col = "lightblue")
+hist(myDF$`Packet Size`, main = "Packet Size Distribution", xlab = "Values", col = "lightblue")
+# dplyr paketini yükle
+library(dplyr)
+
+# Belirli sütunları kaldır
+myDF <- myDF %>%
+  select(-`Flag`, -`Source IP Address`, -`Destination IP Address`)
+
+# Veri setinin sütun isimlerini kontrol et
+colnames(myDF)
+```
+
+Veri setinin temel özelliklerini ve dağılımlarını incelemek için ilk olarak, veri setinin tipi, yapısal özellikleri ve temel istatistikleri gösterildi. Daha sonra, sütun türlerinin kontrolü ve eksik veri kontrolü yapıldı. Eksik verilerin görselleştirilmesi için *VIM* paketi kullanıldı. Son olarak, sayısal sütunlara ait histogramlar çizildi. *Bu adımların amacı, veri setinin genel yapısını anlamak, sayısal değişkenlerin dağılımlarını görselleştirmek ve olası anormallikleri belirlemektir.*
