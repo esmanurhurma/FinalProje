@@ -94,3 +94,9 @@ colnames(myDF)
 ```
 
 Veri setinin temel özelliklerini ve dağılımlarını incelemek için ilk olarak, veri setinin tipi, yapısal özellikleri ve temel istatistikleri gösterildi. Daha sonra, sütun türlerinin kontrolü ve eksik veri kontrolü yapıldı. Eksik verilerin görselleştirilmesi için *VIM* paketi kullanıldı. Son olarak, sayısal sütunlara ait histogramlar çizildi. *Bu adımların amacı, veri setinin genel yapısını anlamak, sayısal değişkenlerin dağılımlarını görselleştirmek ve olası anormallikleri belirlemektir.*
+
+# Q5 : Veri mühendisliği
+
+İlk olarak, veri seti hakkında genel bilgiler alınıyor; yapısal özellikler, temel istatistikler ve sütun tipleri inceleniyor. Eksik veri kontrolü yapılıyor ve eksik değerlerin görselleştirmesi sağlanıyor. Sayısal sütunlar için histogramlar çizilip belirli sütunlar kaldırılıyor. Sonrasında, veri seti model eğitimi için train ve test olarak ayrılıyor, hedef değişken faktöryel hale getirilip randomForest algoritması ile bir model eğitiliyor.
+
+Eğitilen model kullanılarak test verisi üzerinde tahminler yapılıyor ve accuracy hesaplanıyor. Precision, Recall ve F1-score gibi performans metrikleri hesaplanarak sonuçlar görselleştiriliyor. Bu süreç, veri setinin analiz edilmesi, önişleme adımları ve sınıflandırma modelinin eğitilip değerlendirilmesini içeriyor.
