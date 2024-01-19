@@ -9,3 +9,7 @@ output:
 
 Şirketimiz **Inferno Orange Dynamics Gönüllü Kuruluş**. Problemimiz *"Siber Güvenlik için Ağ Trafiği Analizi Veri Kümesi" üzerinde çalışarak, saldırıların en çok hangi protokol üzerinden manipüle edildiğini bilgine ulaşmak ve protokol üzerinde gerçekleşme ihtimali en yüksek olan saldırıyı belirlemek*.
 
+# Q2 : Proje Amacı
+
+[Cyber Threat Data for New Malware Attacks](https://www.kaggle.com/datasets/zunxhisamniea/cyber-threat-data-for-new-malware-attacks/data) adlı Kaggle veri setini kullanarak iş problemini *Decision Trees* ve **Random Forests** modellemeleri kullanarak çözmeyi amaçlıyoruz. Bu sayede problemin çözümüyle kar arttırımına katkıda bulunmayı planlıyoruz.
+
