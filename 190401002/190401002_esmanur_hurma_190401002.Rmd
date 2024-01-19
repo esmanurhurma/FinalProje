@@ -1,0 +1,11 @@
+---
+title: "Proje Rapor : Esmanur Hurma 190401002"
+output:
+  html_document:
+    df_print: paged
+---
+
+# Q1 : Problem tanımı
+
+Şirketimiz **Inferno Orange Dynamics Gönüllü Kuruluş**. Problemimiz *"Siber Güvenlik için Ağ Trafiği Analizi Veri Kümesi" üzerinde çalışarak, saldırıların en çok hangi protokol üzerinden manipüle edildiğini bilgine ulaşmak ve protokol üzerinde gerçekleşme ihtimali en yüksek olan saldırıyı belirlemek*.
+
