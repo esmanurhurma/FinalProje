@@ -13,3 +13,50 @@ output:
 
 [Cyber Threat Data for New Malware Attacks](https://www.kaggle.com/datasets/zunxhisamniea/cyber-threat-data-for-new-malware-attacks/data) adlı Kaggle veri setini kullanarak iş problemini *Decision Trees* ve **Random Forests** modellemeleri kullanarak çözmeyi amaçlıyoruz. Bu sayede problemin çözümüyle kar arttırımına katkıda bulunmayı planlıyoruz.
 
+# Q3 : Veri seti keşifsel analizi
+
+Bu kısımda kullanılacak olan temel R kütüphaneleri yüklenir. readr veri okuma işlemleri için, dplyr veri manipülasyonu için, VIM eksik veri görselleştirmesi için kullanılır. Model eğitimi için Random Forest kullanılır.
+
+```{r}
+# Gerekli kütüphaneleri yükle
+library(readr)
+library(dplyr)
+library(VIM)
+library(randomForest)
+```
+
+cyberthreat.csv adlı veri seti, belirtilen dosya yolundan okunur ve myDF isimli bir veri çerçevesine atanır. Veri çerçevesinin satır ve sütun sayıları ekrana yazdırılır.
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+# Kaggle'dan indirilen CSV dosyasının yolu
+dosya_yolu <- "C:/Users/Casper/final/cyberthreat.csv"
+
+# CSV dosyasını read_csv() fonksiyonu ile oku
+myDF <- readr::read_csv(dosya_yolu)
+
+# Veri boyutlarını göster
+cat("Satır Sayısı:", nrow(myDF), "\n")
+cat("Sütun Sayısı:", ncol(myDF), "\n")
+
+# Değişkenin tipini göster
+cat("Değişken Tipi:", class(myDF)[[1]], "\n")
+```
+
+Veri setinin yapısını detaylı bir şekilde sunarak sütun adları, veri tipleri ve ilk değerleri içeren bilgilere bakıldı. Temel istatistiksel özellikleri sunarak her sütunun genel dağılımını gösterildi. Her sütunun veri tipini belirleyerek veri setindeki değişken türlerini gösterildi. Son olarak her sütundaki eksik (NA) değerlerin sayısını hesaplar, böylece eksik verilerin dağılımını anlamak mümkün olur. Bu adımlar, veri setinin genel yapısını ve potansiyel eksik verileri anlamak adına önemlidir.
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+# Veri Seti Hakkında Genel Bilgiler:
+# Veri setinin yapısal özellikleri
+str(myDF)
+
+# Temel istatistikler
+summary(myDF)
+
+# Sütun Tiplerini Kontrol Etme:
+# Veri setindeki sütun türleri
+sapply(myDF, class)
+
+# Eksik Veri Kontrolü:
+# Her sütundaki eksik değer sayıları
+colSums(is.na(myDF))
+```
