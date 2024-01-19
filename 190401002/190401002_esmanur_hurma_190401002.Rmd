@@ -100,3 +100,50 @@ Veri setinin temel özelliklerini ve dağılımlarını incelemek için ilk olar
 İlk olarak, veri seti hakkında genel bilgiler alınıyor; yapısal özellikler, temel istatistikler ve sütun tipleri inceleniyor. Eksik veri kontrolü yapılıyor ve eksik değerlerin görselleştirmesi sağlanıyor. Sayısal sütunlar için histogramlar çizilip belirli sütunlar kaldırılıyor. Sonrasında, veri seti model eğitimi için train ve test olarak ayrılıyor, hedef değişken faktöryel hale getirilip randomForest algoritması ile bir model eğitiliyor.
 
 Eğitilen model kullanılarak test verisi üzerinde tahminler yapılıyor ve accuracy hesaplanıyor. Precision, Recall ve F1-score gibi performans metrikleri hesaplanarak sonuçlar görselleştiriliyor. Bu süreç, veri setinin analiz edilmesi, önişleme adımları ve sınıflandırma modelinin eğitilip değerlendirilmesini içeriyor.
+
+# Q6 : Veri analizi
+
+Random Forest sınıflandırma modeli oluşturarak siber güvenlik tehditlerini tahmin etmeyi amaçlar. İlk olarak, veri seti %80 eğitim ve %20 test olacak şekilde ayrılır. Hedef değişken "Target Variable" faktöryel hale getirilir.
+
+Ardından, eğitim verisi kullanılarak Random Forest modeli oluşturulur (ntree = 100). Test verisi üzerinde yapılan tahminlerle bir Confusion Matrix elde edilir ve modelin doğruluğu (Accuracy) hesaplanır.
+
+Precision, Recall ve F1-score gibi performans metrikleri de bu Confusion Matrix üzerinden hesaplanır ve sonuçlar bir veri çerçevesinde görselleştirilir. Bu süreç, veri seti üzerinde eğitim ve test setleri oluşturmayı, bir sınıflandırma modeli eğitmeyi ve modelin performansını değerlendirmeyi içerir.
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+# Gerekli kütüphaneleri yükle
+install.packages("randomForest")
+library(randomForest)
+
+# Model için veriyi ayırma
+set.seed(123)  
+sample_index <- sample(1:nrow(myDF), 0.8 * nrow(myDF))  # %80 train, %20 test
+train_data <- myDF[sample_index, ]
+test_data <- myDF[-sample_index, ]
+
+colnames(train_data)
+
+# Hedef değişkeni faktöryel hale getirme
+train_data$`Target Variable` <- as.factor(train_data$`Target Variable`)
+
+# Modeli eğitme
+model <- randomForest(`Target Variable` ~ Protocol + Packet, data = train_data, ntree = 100)
+
+# Test verisi üzerinde tahmin yapma
+predictions <- predict(model, test_data)
+
+# Confusion matrix ve accuracy hesaplama
+conf_matrix <- table(predictions, test_data$`Target Variable`)
+accuracy <- sum(diag(conf_matrix)) / sum(conf_matrix)
+conf_matrix
+cat("Accuracy:", accuracy, "\n")
+
+# Precision, Recall ve F1-score hesaplama
+precision <- diag(conf_matrix) / rowSums(conf_matrix)
+recall <- diag(conf_matrix) / colSums(conf_matrix)
+f1_score <- 2 * (precision * recall) / (precision + recall)
+
+# Metrikleri görselleştirme
+metrics_df <- data.frame(Precision = precision, Recall = recall, F1_Score = f1_score)
+print("Precision, Recall ve F1-score:")
+print(metrics_df)
+```
